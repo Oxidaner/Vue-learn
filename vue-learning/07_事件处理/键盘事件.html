@@ -18,6 +18,7 @@
                         退出 => esc
                         空格 => space
                         换行 => tab (特殊，必须配合keydown去使用)
+                        大小写 => caps-lock(特殊,两个单词组成 需要小写加分隔符)
                         上 => up
                         下 => down
                         左 => left
@@ -40,8 +41,9 @@
         <input type="text" @keyup.delete="showInfo" placeholder="退格或删除提示输入" />
         <input type="text" @keyup.esc="showInfo" placeholder="按下esc提示输入" />
         <input type="text" @keydown.tab="showInfo" placeholder="按下tab示输入" />
-        <input type="text" @keyup.ctrl="showInfo" placeholder="按下command提示输入" />
+        <input type="text" @keyup.ctrl.y="showInfo" placeholder="按下ctrl+y提示输入" />
         <input type="text" @keydown.p="showInfo" placeholder="按下p提示输入" />
+        <input type="text" @keydown.caps-lock="showInfo" placeholder="按下Capslock提示输入" />
         <!--键盘事件的修饰符也可以连用-->
         <input type="text" @keydown.command.g="showInfo" placeholder="按下command和g提示输入" />
     </div>
