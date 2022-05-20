@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="elem">
+        <div id="elem-content">Element</div>
+    </div>
+
+    <script>
+        // elem 是对带有 id="elem" 的 DOM 元素的引用
+        elem.style.background = 'red';
+
+        // id="elem-content" 内有连字符，所以它不能成为一个变量
+        // ...但是我们可以通过使用方括号 window['elem-content'] 来访问它
+    </script>
+</body>
+
+</html>
