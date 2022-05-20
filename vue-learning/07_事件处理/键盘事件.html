@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>vue 键盘事件</title>
     <script src="../js/vue.js"></script>
 </head>
+
 <body>
-     <!--
+    <!--
             1.Vue中常用的按键别名：
                         回车 => enter
                         删除 => delete (捕获“删除”和“退格”键)
@@ -31,26 +33,26 @@
 
             5.Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名
     -->
-  <div id="root">
+    <div id="root">
         <!--vue中键盘事件的绑定 一般用keyUp(keydown)-->
         <h1>欢迎来到{{ name }}</h1>
-        <input type="text" @keyup.enter="showInfo" placeholder="按下回车提示输入"/>
-        <input type="text" @keyup.delete="showInfo" placeholder="退格或删除提示输入"/>
-        <input type="text" @keyup.esc="showInfo" placeholder="按下esc提示输入"/>
-        <input type="text" @keydown.tab="showInfo" placeholder="按下tab示输入"/>
-        <input type="text" @keyup.ctrl="showInfo" placeholder="按下command提示输入"/>
-        <input type="text" @keydown.p="showInfo" placeholder="按下p提示输入"/>
+        <input type="text" @keyup.enter="showInfo" placeholder="按下回车提示输入" />
+        <input type="text" @keyup.delete="showInfo" placeholder="退格或删除提示输入" />
+        <input type="text" @keyup.esc="showInfo" placeholder="按下esc提示输入" />
+        <input type="text" @keydown.tab="showInfo" placeholder="按下tab示输入" />
+        <input type="text" @keyup.ctrl="showInfo" placeholder="按下command提示输入" />
+        <input type="text" @keydown.p="showInfo" placeholder="按下p提示输入" />
         <!--键盘事件的修饰符也可以连用-->
-       <input type="text" @keydown.command.g="showInfo" placeholder="按下command和g提示输入"/>
+        <input type="text" @keydown.command.g="showInfo" placeholder="按下command和g提示输入" />
     </div>
     <script type="text/javascript">
         new Vue({
-            el:'#root',
-            data:{
+            el: '#root',
+            data: {
                 name: 'shanghai'
             },
-            methods:{
-                showInfo:function (e){
+            methods: {
+                showInfo: function (e) {
                     // if(e.keyCode === 13) {
                     //     console.log(e.target.value);
                     // }
@@ -61,4 +63,5 @@
         })
     </script>
 </body>
+
 </html>
