@@ -7,8 +7,8 @@
 			    (1).调用原生对应的方法对数组进行更新。
 				(2).重新解析模板，进而更新页面。
 	   在Vue修改数组中的某个元素一定要用如下方法：
-			   1.使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()
-			   2.Vue.set() 或 vm.$set()
+			   1.使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()被vue包裹过得方法
+			   2.或者用 Vue.set() 或 vm.$set() 进行数组更改
     -->
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -37,13 +37,13 @@
         <h2>爱好</h2>
         <!--
       Vue 将被侦听的数组的变更方法进行了包裹，所以它们也将会触发视图更新。这些被包裹过的方法包括：
-      push()
-      pop()
-      shift()
-      unshift()
-      splice()
-      sort()
-      reverse()
+      push() //从数组的末尾添加一个或更多元素
+      pop() //从数组的末尾移除一个元素
+      shift() //从数组的开头移除一个元素
+      unshift() //从数组的开头添加一个或更多元素
+      splice() //从数组中添加或删除元素(索引,长度,替换的元素)
+      sort() //对数组进行排序
+      reverse() //倒序排列数组中的元素
     -->
         <ul v-for="(h, index) in stu.hobbies" :key="index">
             <li>{{ h }}</li>
