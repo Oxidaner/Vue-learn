@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,9 +21,22 @@
         const btn = document.getElementById("btn");
         btn.onclick = () => {
             const input = document.createElement("input");
+
             // input.focus();
+            //这些都要放在appendChild之前
+            input.className = 'demo'
+            input.value = 99
+            input.click = () => {
+                alert(input.value)
+            }
+
             document.body.appendChild(input);
+
+
+            //这些都要放在appendChild之后，因为appendChild是把节点添加到文档中的
+
             input.focus();
+            input.parentElement.style.backgroundColor = 'skyblue'
         }
     </script>
 </body>
