@@ -26,10 +26,13 @@
                     number：输入字符串转为有效的数字
                     trim：输入首尾空格过滤
 		-->
+
+        <!-- 禁止表单提交的默认刷新操作 -->
         <form @submit.prevent="demo">
             <!--写了label则点击它也能使指定的input获取焦点 for属性的值为指定元素的id-->
             <label for="demo">账号:</label>
             <!--v-model主要用来双向绑定输入类表单value值-->
+            <!-- trim 去掉前后空格 -->
             <input type="text" id="demo" v-model.trim="userInfo.account" />
             <br /><br />
             密码: <input type="password" v-model="userInfo.password" />
@@ -56,6 +59,7 @@
                 <option value="Wuhan">武汉</option>
             </select>
             <br /><br />
+            <!-- 懒收集,失去焦点的一瞬间才会收集 -->
             其他信息<textarea v-model.lazy="userInfo.other"></textarea>
             <br /><br />
             <input type="checkbox" v-model="userInfo.ifAgree" />阅读并接受<a href="https://www.google.com.tw">《用户协议》</a>
@@ -72,7 +76,7 @@
                     password: '',
                     sex: 'male',
                     age: '',
-                    hobby: [],
+                    hobby: [], //hobby的初始值影响checkbox收集回来的数据
                     city: '',
                     other: '',
                     ifAgree: ''

@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <title>v-cloak指令</title>
     <style>
-        [v-cloak]{
-            display:none;
+        /* [xx]{} 将所有属性值拥有xx的标签选中 */
+        [v-cloak] {
+            display: none;
         }
     </style>
     <!-- 引入Vue -->
 </head>
+
 <body>
-<!--
+    <!--
         v-cloak指令（没有值）：
-                1.本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性。
-                2.使用css配合v-cloak可以解决网速慢时页面展示出{{xxx}}的问题。
+            1.本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性。
+            2.使用css配合v-cloak可以解决网速慢时页面展示出{{xxx}}的问题。
 -->
-<!-- 准备好一个容器-->
-<div id="root">
-    <h2 v-cloak>{{name}}</h2>
-</div>
-<script type="text/javascript" src="http://localhost:8080/resource/5s/vue.js"></script>
+    <!-- 准备好一个容器-->
+    <div id="root">
+        <h2 v-cloak>{{name}}</h2>
+    </div>
+    <!-- 延迟5s获取 -->
+    <script type="text/javascript" src="http://localhost:8080/resource/5s/vue.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -28,10 +32,11 @@
     Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
 
     new Vue({
-        el:'#root',
-        data:{
-            name:'尚硅谷'
+        el: '#root',
+        data: {
+            name: '尚硅谷'
         }
     })
 </script>
+
 </html>
