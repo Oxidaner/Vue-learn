@@ -16,11 +16,12 @@
         <!--    <school>-->
         <!--    </school>-->
         <!--    <hello></hello>-->
-        <!--    <app></app>-->
+        <!-- <app></app> -->
     </div>
     <script type="text/javascript">
         Vue.config.productionTip = false;
 
+        //被嵌套的组件要放在嵌套组件之前
         const student = Vue.extend({
             template: `
            <div>
@@ -32,10 +33,11 @@
             data() {
                 return {
                     name: 'JONE',
-                    age: 13
+                    age: 18
                 }
             },
         });
+
 
         const school = Vue.extend({
             template: `
@@ -84,7 +86,7 @@
         });
 
         new Vue({
-            template: `<app></app>`,
+            template: `<app></app>`, //从这里放组件
             el: "#root",
             //注册组件(局部)
             components: {

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>{{msg}}</h1>
+        <hello></hello>
+        <school></school>
+    </div>
+    <div id="root2">
+        <h2>root2容器</h2>
+        <hello></hello>
+    </div>
+    <script>
+        const school = Vue.extend({
+            template: `
+            <div>
+                <h1>学校名称{{schoolName}}</h1>    
+                <h2>学校地址{{address}}</h2>
+                <button @click="showName">点我显示学校名</button>
+            </div>`,
+            data() {
+                return {
+                    schoolName: '天津理工大学',
+                    address: '天津'
+                }
+            },
+            methods: {
+                showName() {
+                    this.schoolName = '武汉科技大学'
+                }
+            }
+        })
+        const hello = Vue.extend({
+            template: `
+            <div>
+                <h1>hello组件</h1>
+                <h2>{{msg}}</h2>
+                <button @click="showMsg">点我显示hello</button>
+            </div>`,
+            data() {
+                return {
+                    msg: 'hello'
+                }
+            },
+            methods: {
+                showMsg() {
+                    this.msg = 'hello vue'
+                }
+            }
+        })
+        const student = Vue.extend({
+            template: `
+            <div>
+                <h2>学生姓名:{{ name }}</h2>
+                <h2>学生年龄:{{ age }}</h2>
+            </div>`,
+            data() {
+                return {
+                    name: 'JONE',
+                    age: 13
+                }
+            }
+        })
+        Vue.component("hello", hello);
+        new Vue({
+            el: '#root',
+            data: {
+                msg: 'hello world'
+            },
+            components: {
+                school,
+                student,
+                hello
+            }
+        })
+        new Vue({
+            el: '#root2',
+        });
+
+    </script>
+</body>
+
+
+</html>
