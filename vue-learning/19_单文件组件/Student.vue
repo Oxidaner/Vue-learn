@@ -22,7 +22,7 @@
     name: 'Student', //开发者工具最终呈现的名字为School
     data(){
       return {
-        name:'panyue',
+        name:'jack',
         age:21
       }
     },
