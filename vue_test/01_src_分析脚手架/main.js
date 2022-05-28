@@ -24,7 +24,7 @@ new Vue({
   // components: { App },
 
   // render: h => h(App), 
-  // el:'#app',
+  el:'#app',
   //将App放到容器中
   render: h => h(App),
   //vue 传递帮你调render函数并传递了一个名为createElement的函数,这里的第一个参数代表h1元素，第二个参数是h1的内容

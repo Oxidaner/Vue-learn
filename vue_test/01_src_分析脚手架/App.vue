@@ -2,9 +2,7 @@
    <div>
      <img src="./assets/logo.png" alt="logo">
      <School></School>
-     <School/>
-     <Student></Student> 
-     <Student/>
+     <Student></Student>
    </div>
 </template>
 
@@ -17,9 +15,8 @@ export default {
   //汇总所有的组件
   components:{
     Student,
-    School,
     School
-}
+  }
 }
 </script>
 
