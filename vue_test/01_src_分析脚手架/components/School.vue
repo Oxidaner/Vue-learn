@@ -22,8 +22,8 @@
     name: 'School', //开发者工具最终呈现的名字为School
     data(){
       return {
-        name:'武汉科技大学',
-        address: '武汉'
+        name:'天津理工大学',
+        address: '天津'
       }
     },
     methods:{
