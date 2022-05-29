@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader :addTodo="addTodo"/>
-        <List
+        <MyList
             :todos="todos"
             :checkTodo="checkTodo"
             :deleteTodo="deleteTodo"
@@ -20,12 +20,12 @@
 
 <script>
 import MyHeader from "@/components/MyHeader";
-import List from "@/components/List";
+import MyList from "@/components/MyList";
 import MyFooter from '@/components/MyFooter';
 export default {
   name: "App",
   components:{
-    List,
+    MyList,
     MyFooter,
     MyHeader
   },

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "School",
+  name: "MySchool",
   data(){
     console.log(this);
     return {
