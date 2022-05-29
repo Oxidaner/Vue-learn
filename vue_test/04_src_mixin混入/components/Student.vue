@@ -8,7 +8,7 @@
 <script>
 import {  mixin,  shareData } from "@/mixin";
 export default {
-  name: "Student",
+  name: "MyStudent",
   data(){
     console.log(this);
     return {

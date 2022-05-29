@@ -9,7 +9,7 @@
 //引入混合
 import {  mixin, shareData } from "@/mixin";
 export default {
-  name: "School",
+  name: "MySchool",
   data(){
     console.log(this);
     return {
