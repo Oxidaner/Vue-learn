@@ -41,19 +41,24 @@ export default {
   methods:{
     //添加的todo
     addTodo(todo){
-      console.log('我是app组件，我收到了数据');
+      console.log('我是app组件,我收到了数据');
       this.todos.unshift(todo);
     },
+    //勾选/取消勾选todo
     checkTodo(id){
       const todo = this.todos.find(todo => todo.id === id);
       todo.done = !todo.done;
     },
+    //删除一个todo
     deleteTodo(id){
+      //得到一个新数组,需要重新赋值
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
+    //全选or取消全选
     checkAllTodo(done){
       this.todos.forEach(todo => todo.done = done);
     },
+    //清除全部已经做完的todo
     clearAllDoneTodo(){
       this.todos = this.todos.filter(todo => !todo.done)
     }

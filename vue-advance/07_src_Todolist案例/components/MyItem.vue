@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "Item",
+  name: "MyItem",
   //声明接收todo
   props: ['todo', 'checkTodo', 'deleteTodo'],
   methods:{

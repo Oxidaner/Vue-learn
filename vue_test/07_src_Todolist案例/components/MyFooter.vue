@@ -21,6 +21,12 @@ export default {
       return this.todos.length;
     },
     doneTotal(){
+      /* 
+        reduce:
+        应用函数时，上一个函数调用的结果将作为第一个参数传递给下一个函数。
+        第一个参数本质上是累加器，用于存储所有先前执行的组合结果。最后，它成为 reduce 的结果返回值。
+        但是这种使用需要非常小心。如果数组为空，那么在没有初始值的情况下调用 reduce 会导致错误。
+      */
       return this.todos.reduce((todoTotal, todo) => {
         //隐士类型转换
         return todoTotal + todo.done;

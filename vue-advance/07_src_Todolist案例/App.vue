@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader :addTodo="addTodo"/>
-        <List
+        <MyList
             :todos="todos"
             :checkTodo="checkTodo"
             :deleteTodo="deleteTodo"
@@ -20,12 +20,12 @@
 
 <script>
 import MyHeader from "@/components/MyHeader";
-import List from "@/components/List";
+import MyList from "@/components/MyList";
 import MyFooter from '@/components/MyFooter';
 export default {
   name: "App",
   components:{
-    List,
+    MyList,
     MyFooter,
     MyHeader
   },
@@ -41,7 +41,7 @@ export default {
   methods:{
     //添加的todo
     addTodo(todo){
-      console.log('我是app组件，我收到了数据');
+      console.log('我是app组件,我收到了数据');
       this.todos.unshift(todo);
     },
     checkTodo(id){

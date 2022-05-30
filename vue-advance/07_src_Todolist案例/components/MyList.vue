@@ -1,22 +1,23 @@
 <template>
   <ul class="todo-main">
-    <Item
+    <MyItem
         v-for="todoObj in todos"
         :key="todoObj.id"
-        :todo="todoObj"
+        :todo="todoObj" 
         :checkTodo="checkTodo"
         :deleteTodo="deleteTodo"
     />
+    <!-- 注意冒号,绑定 -->
   </ul>
 </template>
 
 <script>
-import Item from "@/components/Item";
+import MyItem from "@/components/MyItem";
 
 export default {
-  name: "List",
+  name: "MyList",
   components: {
-    Item,
+    MyItem,
   },
   props:['todos', 'checkTodo', 'deleteTodo']
 }

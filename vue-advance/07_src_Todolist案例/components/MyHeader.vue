@@ -16,6 +16,9 @@ export default {
     }
   },
   methods:{
+    // add(e){
+    //   console.log(e.target.value);
+    // },
     add(){
       //将用户的输入包装成一个todo对象
       console.log(this.title)
