@@ -2,12 +2,14 @@
   <div id="root">
     <div class="todo-container">
       <div class="todo-wrap">
-        <MyHeader @addTodo="addTodo" />
-        <List :todos="todos" />
+        <MyHeader @addTodo="addTodo"/>
+        <List
+            :todos="todos"
+        />
         <MyFooter
-          :todos="todos"
-          @checkAllTodo="checkAllTodo"
-          @clearAllDoneTodo="clearAllDoneTodo"
+            :todos="todos"
+            @checkAllTodo="checkAllTodo"
+            @clearAllDoneTodo="clearAllDoneTodo"
         />
       </div>
     </div>
@@ -17,13 +19,14 @@
 <script>
 import MyHeader from "@/components/MyHeader";
 import List from "@/components/List";
-import MyFooter from "@/components/MyFooter";
+import MyFooter from '@/components/MyFooter';
+import pubsub from "pubsub-js";
 export default {
   name: "App",
-  components: {
+  components:{
     List,
     MyFooter,
-    MyHeader,
+    MyHeader
   },
   data() {
     return {
@@ -32,51 +35,51 @@ export default {
       //   {id: '002', title: "睡觉", done: true},
       //   {id: '003', title: '打代码', done: false}
       // ]
-      todos: JSON.parse(localStorage.getItem("todos")) || [],
-    };
+      todos:JSON.parse(localStorage.getItem('todos')) || []
+    }
   },
-  methods: {
+  methods:{
     //添加的todo
-    addTodo(todo) {
-      console.log("我是app组件,我收到了数据");
+    addTodo(todo){
+      console.log('我是app组件，我收到了数据');
       this.todos.unshift(todo);
     },
-    checkTodo(id) {
-      const todo = this.todos.find((todo) => todo.id === id);
+    checkTodo(id){
+      const todo = this.todos.find(todo => todo.id === id);
       todo.done = !todo.done;
     },
-    deleteTodo(id) {
-      this.todos = this.todos.filter((todo) => todo.id !== id);
+    deleteTodo(_, id){
+      this.todos = this.todos.filter(todo => todo.id !== id);
     },
-    checkAllTodo(done) {
-      this.todos.forEach((todo) => (todo.done = done));
+    checkAllTodo(done){
+      this.todos.forEach(todo => todo.done = done);
     },
-    clearAllDoneTodo() {
-      this.todos = this.todos.filter((todo) => !todo.done);
-    },
+    clearAllDoneTodo(){
+      this.todos = this.todos.filter(todo => !todo.done)
+    }
   },
-  watch: {
+  watch:{
     //深度监视
-    todos: {
+    todos:{
       deep: true, //深度监视当我监视数组中的对象的某个属性的变化它也会产生反应
       handler(newValue) {
         //本地存储存的是key和value都是字符串
         //数据存放在本地存储中
-        localStorage.setItem("todos", JSON.stringify(newValue));
-      },
+        localStorage.setItem("todos", JSON.stringify(newValue))
+      }
     },
   },
   //已挂在绑定事件总线
   mounted() {
-    this.$bus.$on("checkTodo", this.checkTodo);
-    this.$bus.$on("deleteTodo", this.deleteTodo);
+    this.$bus.$on('checkTodo', this.checkTodo);
+    this.pubId = pubsub.subscribe('deleteTodo', this.deleteTodo);
   },
   //被卸载注意解绑
   beforeMount() {
-    this.$bus.$off("checkTodo");
-    this.$bus.$off("deleteTodo");
-  },
-};
+    this.$bus.$off('checkTodo');
+    pubsub.unsubscribe(this.pubId); //取消订阅的方式与取消定时器的方式是类似的，记住
+  }
+}
 </script>
 
 <style>
@@ -94,8 +97,7 @@ body {
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 }
 
@@ -123,6 +125,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
 </style>
 
 

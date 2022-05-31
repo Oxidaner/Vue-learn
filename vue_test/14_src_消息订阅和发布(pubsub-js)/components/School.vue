@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import pubsub from "pubsub-js";
 export default {
   name: "School",
   data() {
@@ -15,20 +16,21 @@ export default {
       address: "天津",
     };
   },
-
   mounted() {
-    console.log("School", this);
-    // this.$bus.$on("hello", function (data) {
-    //   console.log(this); //this === School
+    // console.log('School', this);
+    // this.$bus.$on('hello', (data) => {
     //   console.log(`我是School组件,我收到了数据,${data}`);
-    // });
-    this.$bus.$on("hello", (data) => {
-      console.log(this); //this === vc
-      console.log(`我是School组件,我收到了数据,${data}`);
+    // })
+    //订阅消息 隔空对讲机喊话
+    this.pubId = pubsub.subscribe("hello", (name, msg) => {
+      //注意这里写剪头函数this才不会丢
+      console.log(`有人发布了hello消息，回调被执行,data: ${msg}`);
     });
   },
   beforeDestroy() {
-    this.$bus.$off("hello"); //销毁解绑
+    // this.$bus.$off('hello'); //销毁解绑
+    //取消订阅
+    pubsub.unsubscribe(this.pubId); //取消订阅
   },
 };
 </script>
