@@ -39,7 +39,7 @@ export default {
   methods: {
     //添加的todo
     addTodo(todo) {
-      console.log("我是app组件,我收到了数据");
+      console.log("我是app组件，我收到了数据");
       this.todos.unshift(todo);
     },
     checkTodo(id) {
@@ -54,6 +54,11 @@ export default {
     },
     clearAllDoneTodo() {
       this.todos = this.todos.filter((todo) => !todo.done);
+    },
+    updateTodo(id, title) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) todo.title = title;
+      });
     },
   },
   watch: {
@@ -70,11 +75,13 @@ export default {
   //已挂在绑定事件总线
   mounted() {
     this.$bus.$on("checkTodo", this.checkTodo);
+    this.$bus.$on("updateTodo", this.updateTodo);
     this.pubId = pubsub.subscribe("deleteTodo", this.deleteTodo);
   },
   //被卸载注意解绑
   beforeMount() {
     this.$bus.$off("checkTodo");
+    this.$bus.$off("updateTodo");
     pubsub.unsubscribe(this.pubId); //取消订阅的方式与取消定时器的方式是类似的，记住
   },
 };
@@ -109,6 +116,13 @@ body {
 .btn-danger:hover {
   color: #fff;
   background-color: #bd362f;
+}
+
+.btn-edit {
+  color: #fff;
+  background-color: skyblue;
+  border: 1px solid rgb(103, 159, 180);
+  margin-right: 5px;
 }
 
 .btn:focus {

@@ -3,7 +3,7 @@
   <div class="todo-footer" v-show="total">
     <label>
       <!--这里也可用v-model来替代，此时不需要计算属性了-->
-      <!--      <input type="checkbox" :checked="isAll" @change="checkAll"/>-->
+      <!--<input type="checkbox" :checked="isAll" @change="checkAll"/>-->
       <input type="checkbox" v-model="isAll" />
     </label>
     <span>

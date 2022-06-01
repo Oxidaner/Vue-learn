@@ -24,7 +24,7 @@ export default {
     //订阅消息 隔空对讲机喊话
     this.pubId = pubsub.subscribe("hello", (name, msg) => {
       //注意这里写剪头函数this才不会丢
-      console.log(`有人发布了hello消息，回调被执行,data: ${msg}`);
+      console.log(`有人发布了hello消息,回调被执行,data: ${msg}`);
     });
   },
   beforeDestroy() {
