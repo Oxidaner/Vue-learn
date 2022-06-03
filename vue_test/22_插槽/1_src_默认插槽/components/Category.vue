@@ -1,8 +1,8 @@
 <template>
   <div class="category">
     <h3>{{ title }}</h3>
-    <!--插槽,等着组件的使用者进行填充-->
-    <slot>我是默认值</slot>
+    <!--插槽,(挖个坑)等着组件的使用者进行填充-->
+    <slot>我是默认值,当使用者没有传递具体结构时候,我会出现</slot>
   </div>
 </template>
 
